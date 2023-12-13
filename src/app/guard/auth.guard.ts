@@ -8,7 +8,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   // injecting router service to navigate to profile page if the user is authenticated
   const router = inject(Router);
 
-  // check if the token exists. user is authorized can navigate and have access to routes
+  // check if the token exists, If the user is authorized can navigate and have access to routes
   if (!authService.isAuthenticated) {
     // If token does not exists fallback to register page
     router.navigate(['/register']);
