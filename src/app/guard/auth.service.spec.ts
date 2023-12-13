@@ -13,4 +13,9 @@ describe('AuthService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should register the user', () => {
+    service.registerUser(true);
+    expect(service).toBeTruthy();
+  });
 });
