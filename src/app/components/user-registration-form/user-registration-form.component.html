@@ -1,1 +1,73 @@
-<p>user-registration-form works!</p>
+<div class="container">
+  <div class="page-title">
+    <h1>Register your account</h1>
+  </div>
+  <!-- User Registration Form -->
+  <form
+    [formGroup]="registrationFormGroup"
+    (ngSubmit)="onSubmit(registrationFormGroup.value)"
+  >
+    <!-- Email Form Field -->
+    <div class="example-container">
+      <mat-form-field>
+        <mat-label>Enter your email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="!emailFormControl.valid">
+          {{ getEmailDescriptionError() }}
+        </mat-error>
+      </mat-form-field>
+
+      <!-- Password Form Field -->
+      <mat-form-field>
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          formControlName="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+        </button>
+        <mat-error *ngIf="!passwordFormControl.valid">
+          {{ getPasswordErrorMessage() }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="bio-text">
+      <!-- Bio Form Field -->
+      <mat-form-field>
+        <mat-label>Enter your bio</mat-label>
+        <textarea matInput formControlName="bio" required></textarea>
+        <mat-error *ngIf="!bioFormControl.valid">
+          {{ getBioErrorMessage() }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+
+    <div class="example-button-row">
+      <button
+        mat-raised-button
+        color="primary"
+        [class.spinner]="loading"
+        [disabled]="!!loading"
+      >
+        Register
+      </button>
+    </div>
+
+    <!-- Error message div if API call fails or throws error-->
+    <div class="errorMessage" *ngIf="errorMessage">
+      <span>Something is wrong with the API, try again.</span>
+    </div>
+  </form>
+
+  <!-- User Registration Form Ends -->
+</div>
