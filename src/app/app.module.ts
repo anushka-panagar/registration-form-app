@@ -8,12 +8,14 @@ import { UserProfileDetailsComponent } from './components/user-profile-details/u
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
-  declarations: [
-    AppComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
     UserRegistrationFormComponent,
     UserProfileDetailsComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, BrowserAnimationsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

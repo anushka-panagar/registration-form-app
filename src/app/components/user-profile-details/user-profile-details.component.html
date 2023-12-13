@@ -1,1 +1,18 @@
-<p>user-profile-details works!</p>
+<div class="profile-info">
+  <h2>Profile Details</h2>
+  <!-- Angular material card component for Profile details display -->
+  <mat-card class="example-card" *ngIf="userProfileData">
+    <mat-card-header>
+      <mat-card-title-group>
+        <mat-card-title>Name : {{ userProfileData.name }}</mat-card-title>
+        <mat-card-subtitle
+          >Email: {{ userProfileData.email }}</mat-card-subtitle
+        >
+        <img mat-card-sm-image src="{{ userProfileData.img }}" />
+      </mat-card-title-group>
+    </mat-card-header>
+    <mat-card-content>
+      {{ userProfileData.bio }}
+    </mat-card-content>
+  </mat-card>
+</div>
