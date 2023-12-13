@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { UserRegistrationFormComponent } from './components/user-registration-form/user-registration-form.component';
 import { UserProfileDetailsComponent } from './components/user-profile-details/user-profile-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -16,7 +17,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     UserRegistrationFormComponent,
     UserProfileDetailsComponent,
   ],
-  providers: [],
+  providers: [UserService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

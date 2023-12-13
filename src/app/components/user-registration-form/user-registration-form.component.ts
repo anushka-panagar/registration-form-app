@@ -15,6 +15,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
+import { AuthService } from 'src/app/guard/auth.service';
 
 @Component({
   selector: 'app-user-registration-form',
@@ -41,7 +42,8 @@ export class UserRegistrationFormComponent implements OnInit {
     private userService: UserService,
     private router: Router,
     private formBuilder: FormBuilder,
-    private titleService: Title
+    private titleService: Title,
+    private authService: AuthService
   ) {}
 
   async ngOnInit() {
@@ -115,10 +117,11 @@ export class UserRegistrationFormComponent implements OnInit {
    */
   async onSubmit(formValues: any) {
     if (formValues && this.registrationFormGroup.valid) {
-      this.loading = true;
+      this.loading = !this.loading;
       const response = await this.userService.registerUserForm();
-      if (response.success) {
+      if (response) {
         this.errorMessage = false;
+        this.authService.registerUser(response.success);
         this.router.navigateByUrl('/profile');
       } else {
         this.errorMessage = true;
