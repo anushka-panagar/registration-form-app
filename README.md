@@ -5,8 +5,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 ## Get the code
 
 1. git clone https://github.com/anushka-panagar/registration-form-app.git
-2. npm install
-3. ng serve
+2. cd registration-form-app
+3. npm install
+4. ng serve
 
 ## Development server
 
